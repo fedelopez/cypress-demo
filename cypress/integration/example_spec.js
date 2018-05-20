@@ -2,8 +2,8 @@ describe('Cypress Demo', () => {
 
     beforeEach(() => {
         cy.server({urlMatchingOptions: {matchBase: false}});
-        cy.route('**/v2/**').as('getReview');
-        cy.visit('http://localhost:3001/');
+        cy.route('**/www.mocky.io/**').as('getReview');
+        cy.visit('/');
     });
 
     it('should assert that title is correct', () => {
@@ -20,7 +20,7 @@ describe('Cypress Demo', () => {
         cy.get('ul').children().should('have.length', 28);
     });
 
-    it('should redirect to Github repository', () => {
+    it('should wait for long response', () => {
         cy.get('input').clear().type('fedelopez');
         cy.get('button').click();
         cy.get('ul').children().should('have.length', 28);
